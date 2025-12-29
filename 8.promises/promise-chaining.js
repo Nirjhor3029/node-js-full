@@ -59,13 +59,26 @@ const age = 20
 // });
 
 
+// more better way with return :: ************* promise chaining *******
+asyncFunctionForGetData(1, age).then((res) => {
+    console.log(res);
+    return asyncFunctionForGetData(2, age);
+}).then((res) => {
+    console.log(res);
+    return asyncFunctionForGetData(3, age);
+}).then((res) => {
+    console.log(res);
+}).catch((err) => {
+    console.log(err);
+});
+
 
 
 
 
 /**Loops */
 // //or with the loops
-const studentIds = [101, 102, 2024, 2030];
+// const studentIds = [101, 102, 2024, 2030];
 // studentIds.forEach(studentId => {
 //     console.log(`Fetching data ${studentId}...`);
 //     asyncFunctionForGetData(studentId, age).then((res) => {
@@ -75,16 +88,16 @@ const studentIds = [101, 102, 2024, 2030];
 //     });
 // });
 
-let chain = Promise.resolve();
-console.log(chain);
-studentIds.forEach(studentId => {
-    chain = chain.then(() => {
-        console.log(`Fetching data ${studentId}...`);
-        return asyncFunctionForGetData(studentId, age);
-    }).then(res => {
-        console.log(res);
-    }).catch(err => {
-        console.log(err);
-        throw err; // chain থামানোর জন্য
-    });
-});
+// let chain = Promise.resolve();
+// console.log(chain);
+// studentIds.forEach(studentId => {
+//     chain = chain.then(() => {
+//         console.log(`Fetching data ${studentId}...`);
+//         return asyncFunctionForGetData(studentId, age);
+//     }).then(res => {
+//         console.log(res);
+//     }).catch(err => {
+//         console.log(err);
+//         throw err; // chain থামানোর জন্য
+//     });
+// });
